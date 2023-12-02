@@ -1,8 +1,26 @@
-﻿namespace pop_maria_lab7;
+﻿using System;
+using System.IO;
+using pop_maria_lab7.Data;
+
+namespace pop_maria_lab7;
 
 public partial class App : Application
 {
-	public App()
+    static ShoppingListDatabase database;
+    public static ShoppingListDatabase Database
+    {
+        get
+        {
+            if (database == null)
+            {
+                database = new
+               ShoppingListDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+               LocalApplicationData), "ShoppingList.db3"));
+            }
+            return database;
+        }
+    }
+    public App()
 	{
 		InitializeComponent();
 
